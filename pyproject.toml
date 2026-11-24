@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "intel-feeds"
+dynamic = ["version"]
+description = "Posts cybersecurity news and advisories to Discord through webhooks."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx~=0.28.1",
+    "feedparser~=6.0.14",
+    "pyyaml~=6.0.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest~=9.2",
+]
+
+[project.scripts]
+intel-feeds = "intel_feeds.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/intel_feeds"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.hatch.version]
+path = "src/intel_feeds/__init__.py"

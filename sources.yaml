@@ -1,0 +1,390 @@
+# sources.yaml: every feed the job reads. This is the only file you edit to
+# add, remove or pause a source. Step-by-step guide: docs/adding-sources.md
+#
+# ---------------------------------------------------------------------------
+# Add a source: copy this block to the end of the list, remove the leading
+# "# " from each line, and fill in the first four fields.
+#
+#   - name: Example Security Blog        # required. Unique, shown on each post.
+#     url: https://example.com/feed/     # required. Full https:// feed URL.
+#     type: rss                          # required. rss | kev | nvd | ransomware
+#     category: news                     # required. news | vulns | advisories | research | ransomware
+#     enabled: true                      # optional, default true. false pauses it.
+#     revisions: false                   # optional, default false. See below.
+#     cve_filter: false                  # optional, default false. See below.
+#     site: https://example.com/         # optional. Where the source name links.
+#     icon: https://example.com/icon.png # optional. Logo beside the name.
+#     notes: Why we follow it.           # optional. For humans only.
+#
+# Field reference
+#   name      Any text, unique across this file. Error messages use it to
+#             point at the entry, so keep it short and recognizable.
+#   url       The feed itself, not the site's home page. RSS and Atom both
+#             work with type rss. Look for an RSS icon, a "Feeds" page, or
+#             try adding /feed/ or /rss/ to the site address.
+#   type      How the feed is parsed:
+#               rss  any RSS or Atom feed (almost every new source)
+#               kev  the CISA Known Exploited Vulnerabilities JSON catalog
+#               nvd  the NVD CVE API; filtered to CVSS >= 9.8 before posting
+#               ransomware  the ransomware.live PRO API's newest victims;
+#                    needs the RANSOMWARE_LIVE_API key and category ransomware
+#             kev, nvd and ransomware each exist once below; new sources are rss.
+#   category  Which Discord channel the posts go to:
+#               news        general security news       (WEBHOOK_NEWS)
+#               vulns       exploited and critical CVEs (WEBHOOK_VULNS)
+#               advisories  government and vendor advisories (WEBHOOK_ADVISORIES)
+#               research    threat research write-ups   (WEBHOOK_RESEARCH)
+#               ransomware  leak-site victims; type ransomware only (WEBHOOK_RANSOM)
+#   enabled   true or false. Pause a noisy or broken source without
+#             deleting it.
+#   revisions true or false (rss only). Most feeds list each story once, so
+#             a GUID already posted is skipped. A vendor feed that relists
+#             an advisory under the same GUID with a new date each time it
+#             is revised (Microsoft MSRC) sets this to true: every new date
+#             posts again.
+#   cve_filter true or false (rss only). A vendor feed with an entry per CVE
+#             (Microsoft MSRC) sets this to true to post only the entries
+#             whose CVE is in the KEV catalog or scores CVSS >= 9.8. The
+#             score is looked up in NVD, one request per entry.
+#   site      The source's home page (https). Each post shows the source
+#             name at the top; with site set, the name links there.
+#   icon      An https image URL (PNG or JPEG; Discord may not show .ico)
+#             shown beside the source name. Look for the site's
+#             apple-touch-icon.png, or use Google's favicon service:
+#             https://www.google.com/s2/favicons?domain=example.com&sz=64
+#             Without it the name shows alone.
+#   notes     Free text: why it is here, quirks, volume.
+#
+# A new source does not flood the channel: on its first run only a few
+# recent items are posted and the rest are marked as already seen.
+# ---------------------------------------------------------------------------
+
+# Settings for the whole job. Every line is optional: delete one, or the
+# whole section, and its default (the value shown) applies. `--check-config`
+# validates them like the sources.
+settings:
+  # CVE filter: NVD CVEs, and entries of sources with cve_filter: true,
+  # post only at this CVSS score or higher (0 to 10). KEV entries always post.
+  cvss_min: 9.8
+  # NVD score lookups per run for cve_filter sources (0 to 40). The rest wait
+  # for the next run. Without an NVD_API_KEY a run makes at most 4.
+  cve_lookups_per_run: 20
+
+  # Product watchlist: an NVD CVE below cvss_min still posts when its
+  # description names one of these products and it scores min_cvss or more
+  # (0 to 10). Matching ignores case and needs whole words ("ESXi" does not
+  # match "ESXis"); no wildcards. NVD only: MSRC keeps cvss_min. A watchlist
+  # post shows a "Watchlist" field with the product. Each product adds posts:
+  # about 4 a day for this list (NVD, 90 days to 2026-11-18). Delete the
+  # section, or empty the list, to turn it off.
+  # group_min (2 to 100): when one run lets through this many or more CVEs
+  # for the same product (a vendor's batch disclosure), they post as one
+  # summary listing them instead of one post each.
+  watchlist:
+    min_cvss: 7.0
+    group_min: 3
+    products:
+      - Fortinet
+      - SharePoint
+      - NetScaler
+      - Exchange Server
+      - Confluence
+      - NetWeaver
+      - Ivanti
+      - RouterOS
+      - Adaptive Security Appliance
+      - Zimbra
+      - Roundcube
+      - MOVEit
+      - Veeam
+      - SonicWall
+      - WebLogic
+      - Commvault
+      - SolarWinds
+      - VeloCloud
+      - PaperCut
+      - Zyxel
+      - TeamCity
+      - PAN-OS
+      - BIG-IP
+      - ESXi
+      - vCenter
+      - ScreenConnect
+      - GoAnywhere
+      - CrushFTP
+      - GlobalProtect
+      - SimpleHelp
+      - Check Point
+
+  # Posts per channel per run (1 to 25); the rest go out on the next runs,
+  # oldest first. 4 full channels of 10 make 40 posts, which must fit the
+  # one-minute run.
+  posts_per_channel: 10
+
+  # Flood guard: a new source posts only its newest few items from the last
+  # max_age_days (0 to 25), and on later runs any new item published more than
+  # max_age_days ago is marked seen without posting.
+  new_source_posts: 3
+  max_age_days: 7
+
+  # Items no feed lists any more are dropped from state after keep_days. Keep
+  # it at least 4 times max_age_days, or a dropped item could post again.
+  keep_days: 90
+
+  # Which environment variable holds each channel's webhook URL. Write the
+  # variable's name here, never the URL itself, and set the variable in
+  # .env.
+  webhooks:
+    news: WEBHOOK_NEWS
+    vulns: WEBHOOK_VULNS
+    advisories: WEBHOOK_ADVISORIES
+    research: WEBHOOK_RESEARCH
+    ransomware: WEBHOOK_RANSOM
+
+  # Channels that post more (or fewer) than posts_per_channel a run (1 to 25
+  # each). Leak sites list victims in dumps of 50 or more, one post each, so
+  # the ransomware channel posts up to 25 a run.
+  channel_caps:
+    ransomware: 25
+
+sources:
+  # Vulnerabilities -----------------------------------------------------------
+
+  - name: CISA KEV
+    url: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+    type: kev
+    category: vulns
+    enabled: true
+    site: https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+    icon: https://www.google.com/s2/favicons?domain=cisa.gov&sz=64
+    notes: >-
+      CVEs exploited in the wild. A few additions a week; each new entry
+      mentions @everyone. The catalog is about 2 MB, so fetch it
+      with conditional requests.
+
+  - name: NVD CVE API
+    url: https://services.nvd.nist.gov/rest/json/cves/2.0
+    type: nvd
+    category: vulns
+    enabled: true
+    site: https://nvd.nist.gov/
+    icon: https://www.google.com/s2/favicons?domain=nvd.nist.gov&sz=64
+    notes: >-
+      Every new CVE, about 1,200 published a day (2026-11-18). Only
+      CVSS >= 9.8 is posted (about 40 a day). Queried by publish-date window, not
+      conditional requests (no ETag). Rate limited; an NVD_API_KEY in .env
+      raises the limit.
+
+  # Advisories ----------------------------------------------------------------
+
+  - name: CISA Cybersecurity Advisories
+    url: https://www.cisa.gov/cybersecurity-advisories/all.xml
+    type: rss
+    category: advisories
+    enabled: true
+    site: https://www.cisa.gov/news-events/cybersecurity-advisories
+    icon: https://www.google.com/s2/favicons?domain=cisa.gov&sz=64
+    notes: >-
+      Government advisories and ICS alerts. Returns 200 to the job's HTTP
+      client (httpx) but 403 Access Denied to curl, whatever the user agent
+      (checked 2026-11-18), so check it with scripts/check_feeds.py, not
+      curl. Dates use two-digit years ("17 Nov 26"), which feedparser reads
+      correctly. No ETag or Last-Modified.
+
+  - name: Microsoft MSRC
+    url: https://api.msrc.microsoft.com/update-guide/rss
+    type: rss
+    category: advisories
+    enabled: true
+    site: https://msrc.microsoft.com/update-guide
+    icon: https://msrc.microsoft.com/apple-touch-icon.png
+    revisions: true
+    cve_filter: true
+    notes: >-
+      Microsoft Security Update Guide. Large feed (about 3 MB, roughly 5,800
+      entries going back 3 months). Each CVE appears once per revision with
+      the same GUID and a new date, so revisions: true posts each revision.
+      About 1 in 10 entries is "informational change only". Sends ETag and
+      Last-Modified.
+
+  - name: Cisco PSIRT
+    url: https://sec.cloudapps.cisco.com/security/center/psirtrss20/CiscoSecurityAdvisory.xml
+    type: rss
+    category: advisories
+    enabled: true
+    site: https://sec.cloudapps.cisco.com/security/center/publicationListing.x
+    icon: https://www.google.com/s2/favicons?domain=cisco.com&sz=64
+    notes: >-
+      Cisco security advisories. Dates have no timezone
+      ("2026-11-17 23:53:12.0"); they are read as UTC. No ETag or
+      Last-Modified.
+
+  - name: Fortinet PSIRT
+    url: https://filestore.fortinet.com/fortiguard/rss/ir.xml
+    type: rss
+    category: advisories
+    enabled: true
+    site: https://www.fortiguard.com/psirt
+    icon: https://www.google.com/s2/favicons?domain=fortiguard.com&sz=64
+    notes: FortiGuard PSIRT advisories.
+
+  - name: Palo Alto Networks Security Advisories
+    url: https://security.paloaltonetworks.com/rss.xml
+    type: rss
+    category: advisories
+    enabled: true
+    site: https://security.paloaltonetworks.com/
+    icon: https://security.paloaltonetworks.com/icon-180x180.png
+    notes: PAN-OS and other Palo Alto product advisories.
+
+  # News ----------------------------------------------------------------------
+
+  - name: BleepingComputer
+    url: https://www.bleepingcomputer.com/feed/
+    type: rss
+    category: news
+    enabled: true
+    site: https://www.bleepingcomputer.com/
+    icon: https://www.google.com/s2/favicons?domain=bleepingcomputer.com&sz=64
+    notes: Fast breach and malware coverage.
+
+  - name: The Hacker News
+    url: https://feeds.feedburner.com/TheHackersNews
+    type: rss
+    category: news
+    enabled: true
+    site: https://thehackernews.com/
+    icon: https://www.google.com/s2/favicons?domain=thehackernews.com&sz=64
+    notes: Broad daily coverage.
+
+  - name: The Record
+    url: https://therecord.media/feed
+    type: rss
+    category: news
+    enabled: true
+    site: https://therecord.media/
+    icon: https://therecord.media/favicon-192.png
+    notes: Recorded Future News. Nation-state and policy coverage.
+
+  - name: SecurityWeek
+    url: https://www.securityweek.com/feed/
+    type: rss
+    category: news
+    enabled: true
+    site: https://www.securityweek.com/
+    icon: https://www.google.com/s2/favicons?domain=securityweek.com&sz=64
+    notes: Industry and vulnerability news.
+
+  - name: Krebs on Security
+    url: https://krebsonsecurity.com/feed/
+    type: rss
+    category: news
+    enabled: true
+    site: https://krebsonsecurity.com/
+    icon: https://www.google.com/s2/favicons?domain=krebsonsecurity.com&sz=64
+    notes: >-
+      Investigative pieces, low volume. Served with a text/html content
+      type, but the body is valid RSS.
+
+  # Research ------------------------------------------------------------------
+
+  - name: Cisco Talos
+    url: https://blog.talosintelligence.com/rss/
+    type: rss
+    category: research
+    enabled: true
+    site: https://blog.talosintelligence.com/
+    icon: https://storage.ghost.io/c/af/a0/afa04ee3-414f-4481-8d23-7e7c146f192e/content/images/size/w256h256/2022/07/talos_o_square.png
+    notes: Talos Intelligence blog. Feed is about 1 MB.
+
+  - name: Unit 42
+    url: https://unit42.paloaltonetworks.com/feed/
+    type: rss
+    category: research
+    enabled: true
+    site: https://unit42.paloaltonetworks.com/
+    icon: https://unit42.paloaltonetworks.com/wp-content/uploads/2024/06/icon-Unit42-180x180-1.png
+    notes: Palo Alto Networks threat research.
+
+  - name: Google Threat Intelligence
+    url: https://feeds.feedburner.com/threatintelligence/pvexyqv7v0v
+    type: rss
+    category: research
+    enabled: true
+    site: https://cloud.google.com/blog/topics/threat-intelligence
+    icon: https://cloud.google.com/apple-touch-icon.png
+    notes: >-
+      Google Threat Intelligence Group (formerly Mandiant) blog. The
+      cloud.google.com /rss/ address returns an HTML page; this Feedburner
+      URL is the working feed.
+
+  - name: Microsoft Security Blog
+    url: https://www.microsoft.com/en-us/security/blog/feed/
+    type: rss
+    category: research
+    enabled: true
+    site: https://www.microsoft.com/en-us/security/blog/
+    icon: https://www.google.com/s2/favicons?domain=microsoft.com&sz=64
+    notes: Microsoft Threat Intelligence and security research posts.
+
+  - name: The DFIR Report
+    url: https://thedfirreport.com/feed/
+    type: rss
+    category: research
+    enabled: true
+    site: https://thedfirreport.com/
+    icon: https://www.google.com/s2/favicons?domain=thedfirreport.com&sz=64
+    notes: >-
+      Intrusion case studies from start to ransomware, with IOCs and
+      detections. Low volume, a few posts a month.
+
+  - name: Huntress Blog
+    url: https://www.huntress.com/blog/rss.xml
+    type: rss
+    category: research
+    enabled: true
+    site: https://www.huntress.com/blog
+    icon: https://www.google.com/s2/favicons?domain=huntress.com&sz=64
+    notes: >-
+      Huntress SOC and threat research. The feed lists the whole blog (about
+      760 items, 650 KB), including some product and company posts.
+      /blog/rss without .xml returns 404.
+
+  - name: Check Point Research
+    url: https://research.checkpoint.com/feed/
+    type: rss
+    category: research
+    enabled: true
+    site: https://research.checkpoint.com/
+    icon: https://www.google.com/s2/favicons?domain=checkpoint.com&sz=64
+    notes: Check Point Research threat and vulnerability research.
+
+  - name: Elastic Security Labs
+    url: https://www.elastic.co/security-labs/rss/feed.xml
+    type: rss
+    category: research
+    enabled: true
+    site: https://www.elastic.co/security-labs
+    icon: https://www.elastic.co/apple-touch-icon.png
+    notes: >-
+      Elastic's threat research and detection engineering. The feed is
+      large (about 8.5 MB, 314 items with full article bodies), under the
+      20 MB cap.
+
+  # Ransomware ----------------------------------------------------------------
+
+  - name: ransomware.live
+    url: https://api-pro.ransomware.live/victims/recent
+    type: ransomware
+    category: ransomware
+    # Off until you have a ransomware.live PRO API key: put it in .env as
+    # RANSOMWARE_LIVE_API, then set this to true.
+    enabled: false
+    site: https://www.ransomware.live/
+    icon: https://www.google.com/s2/favicons?domain=ransomware.live&sz=64
+    notes: >-
+      Victims posted on ransomware leak sites, worldwide, one post each. The
+      100 newest victims (about 100 KB, about 20 to 60 posted a day in November 2026); no
+      ETag, so fetched in full each run. Needs the RANSOMWARE_LIVE_API key
+      (60 requests a minute). Posts link to ransomware.live, never to the
+      leak site.

@@ -1,0 +1,45 @@
+# Runs the test suite on every pull request and on every push to main.
+# Tests run offline (tests/conftest.py fails any HTTP request a test has not
+# mocked) and need no secrets, so this workflow gets none.
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# A newer push to the same branch or PR replaces a run still in progress.
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        # The oldest supported and the one the Docker image runs.
+        python: ["3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: requirements-dev.lock
+
+      # The dev lock holds the runtime pins from requirements.lock plus pytest
+      # (tests/test_lockfile.py checks they match).
+      - name: Install
+        run: |
+          pip install --require-hashes -r requirements-dev.lock
+          pip install --no-deps .
+
+      - name: Run the tests
+        run: python -m pytest -q

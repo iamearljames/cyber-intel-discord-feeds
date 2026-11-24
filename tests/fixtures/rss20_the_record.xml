@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>The Record from Recorded Future News</title>
+        <link>https://therecord.media/feed</link>
+        <description>The Record by Recorded Future News gives exclusive, behind-the-scenes access to leaders, policymakers, researchers, and the shadows of the cyber underground.</description>
+        <lastBuildDate>Tue, 17 Nov 2026 21:20:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>The Record from Recorded Future News</generator>
+        <language>en</language>
+        <copyright>Copyright © 2026 | The Record from Recorded Future News</copyright>
+        <item>
+            <title><![CDATA[Website management platform Optimizely confirms hackers put malicious code into customer sites]]></title>
+            <link>https://therecord.media/optimizely-malicious-code-customer-sites</link>
+            <guid>https://therecord.media/optimizely-malicious-code-customer-sites</guid>
+            <pubDate>Tue, 17 Nov 2026 21:20:00 GMT</pubDate>
+            <description><![CDATA[Researchers said they found malicious JavaScript code on 178 different widely visited websites run through the Optimizely Web experimentation platform. The company confirmed the breach.]]></description>
+            <category>Malware</category>
+            <category>News</category>
+            <category>Cybercrime</category>
+            <enclosure url="http://cms.therecord.media/uploads/optimizely_logo_a558e0b619.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Kazakh ransomware hacking suspect extradited from Italy]]></title>
+            <link>https://therecord.media/kazakh-suspected-extradited-charges-8-digits-team-inc-lynx</link>
+            <guid>https://therecord.media/kazakh-suspected-extradited-charges-8-digits-team-inc-lynx</guid>
+            <pubDate>Tue, 17 Nov 2026 19:09:00 GMT</pubDate>
+            <description><![CDATA[The U.S. accused Roman Khlynovskiy of participating in ransomware attacks against healthcare organizations, schools and companies as part of the "8 Digits Team" connected with INC and Lynx.]]></description>
+            <category>Industry</category>
+            <category>Cybercrime</category>
+            <category>News</category>
+            <category>News Briefs</category>
+            <enclosure url="http://cms.therecord.media/uploads/emergency_room_sign_pexels_rdne_08178c3cee.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Chinese state group developing automated attack tool for cyber espionage, Google says]]></title>
+            <link>https://therecord.media/chinese-state-group-developing-automated-attack-tool-espionage</link>
+            <guid>https://therecord.media/chinese-state-group-developing-automated-attack-tool-espionage</guid>
+            <pubDate>Tue, 17 Nov 2026 18:50:00 GMT</pubDate>
+            <description><![CDATA[Google released its latest AI Threat Tracker report on Monday, writing that threat actors are rapidly evolving their use of artificial intelligence in attacks — now leaning more heavily on autonomous multi-agent offensive frameworks like Artex, CAIRN, CyberStrikeAI and PentAGI to execute multi-stage intrusions at greater operational velocity.]]></description>
+            <category>Cybercrime</category>
+            <category>Government</category>
+            <category>News</category>
+            <category>Nation-state</category>
+            <enclosure url="http://cms.therecord.media/uploads/red_digital_f1b63748b1.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[California fines Hertz $1.5 million for breaking state data privacy law]]></title>
+            <link>https://therecord.media/california-fines-hertz-state-data-privacy-law</link>
+            <guid>https://therecord.media/california-fines-hertz-state-data-privacy-law</guid>
+            <pubDate>Tue, 17 Nov 2026 17:13:00 GMT</pubDate>
+            <description><![CDATA[Hertz agreed to the fine and said it would change its business practices, according to a court filing shared by the regulator, the California Privacy Protection Agency (CPPA).]]></description>
+            <category>News</category>
+            <category>News Briefs</category>
+            <category>Privacy</category>
+            <enclosure url="http://cms.therecord.media/uploads/hertz_5598ef5477.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[NSA Net, agency’s classified internal network, faces unspecified disruptions]]></title>
+            <link>https://therecord.media/nsa-net-disruptions</link>
+            <guid>https://therecord.media/nsa-net-disruptions</guid>
+            <pubDate>Tue, 17 Nov 2026 16:21:00 GMT</pubDate>
+            <description><![CDATA[The NSA has ordered staggered arrivals at its headquarters at Fort Meade, Maryland, as technicians work to fully restore the classified internal network NSA Net.]]></description>
+            <category>Government</category>
+            <category>News</category>
+            <category>Technology</category>
+            <category>News Briefs</category>
+            <enclosure url="http://cms.therecord.media/uploads/ave_calvar_8_8xu_Jp8_M_unsplash_6f3e8537f6.jpg" length="0" type="image/jpg"/>
+        </item>
+    </channel>
+</rss><!-- generated at 2026-11-18T08:03:53.292Z -->

@@ -1,0 +1,28 @@
+name: New source
+description: Suggest a free, public feed to add
+labels: [enhancement]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Source name
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Feed URL (https)
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Channel
+      options: [news, vulns, advisories, research]
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it is worth adding
+      description: What it covers that the current sources do not, and roughly how many posts a day.

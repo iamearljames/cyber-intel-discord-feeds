@@ -1,0 +1,15 @@
+# Secrets: webhook URLs must never be committed
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+dist/
+build/
+
+# Local state from runs outside Docker
+state.json

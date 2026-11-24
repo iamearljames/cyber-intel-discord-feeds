@@ -1,0 +1,38 @@
+# Builds the Docker image on every pull request and push to main, then
+# checks it starts: the version, the shipped sources.yaml, the healthcheck
+# command and the non-root user. Needs no secrets and posts nothing.
+name: Docker
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docker-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Build
+        run: docker build -t intel-feeds:ci .
+
+      - name: Smoke test
+        run: |
+          set -eu
+          version=$(python3 -c 'import re; print(re.search(r"__version__ = \"(.+)\"", open("src/intel_feeds/__init__.py").read())[1])')
+          test "$(docker run --rm intel-feeds:ci --version)" = "intel_feeds $version"
+          docker run --rm intel-feeds:ci --check-config
+          # No run yet, so the healthcheck must say unhealthy (exit 1).
+          if docker run --rm intel-feeds:ci --health; then exit 1; fi
+          test "$(docker run --rm --entrypoint id intel-feeds:ci -u)" = 10001
+          touch .env  # compose requires it; users fill it from .env.example
+          docker compose config --quiet

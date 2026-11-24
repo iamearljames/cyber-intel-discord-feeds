@@ -1,0 +1,13 @@
+# Weekly PRs for a new build of the pinned Python base image and for the
+# pinned GitHub Actions. Python packages are pinned in requirements.lock
+# (regenerate with the commands in docs/how-it-works.md).
+version: 2
+updates:
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

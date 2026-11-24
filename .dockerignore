@@ -1,0 +1,7 @@
+# Only what the image needs; never .env (webhook URLs) or state.
+*
+!requirements.lock
+!src/
+!sources.yaml
+**/__pycache__
+**/*.pyc

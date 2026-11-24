@@ -1,0 +1,601 @@
+{
+  "resultsPerPage": 5,
+  "startIndex": 0,
+  "totalResults": 1245,
+  "format": "NVD_CVE",
+  "version": "2.0",
+  "timestamp": "2026-11-18T08:04:36.908",
+  "vulnerabilities": [
+    {
+      "cve": {
+        "id": "CVE-2026-129008",
+        "sourceIdentifier": "audit@patchstack.com",
+        "published": "2026-11-17T08:16:59.700",
+        "lastModified": "2026-11-17T12:17:46.117",
+        "vulnStatus": "Deferred",
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in WPExperts Gutena Forms \u2013 Contact Form, Survey Form, Feedback Form, Booking Form, and Custom Form Builder gutena-forms allows Stored XSS.This issue affects Gutena Forms \u2013 Contact Form, Survey Form, Feedback Form, Booking Form, and Custom Form Builder: from n/a through 2.1.1."
+          }
+        ],
+        "affected": [
+          {
+            "source": "audit@patchstack.com",
+            "affectedData": [
+              {
+                "vendor": "WPExperts",
+                "product": "Gutena Forms \u2013 Contact Form, Survey Form, Feedback Form, Booking Form, and Custom Form Builder",
+                "defaultStatus": "unaffected",
+                "collectionURL": "https://wordpress.org/plugins",
+                "packageName": "gutena-forms",
+                "versions": [
+                  {
+                    "version": "0",
+                    "lessThanOrEqual": "2.1.1",
+                    "versionType": "custom",
+                    "status": "affected",
+                    "changes": [
+                      {
+                        "at": "2.2.0",
+                        "status": "unaffected"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "audit@patchstack.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:L",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "REQUIRED",
+                "scope": "CHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "LOW"
+              },
+              "exploitabilityScore": 2.3,
+              "impactScore": 3.7
+            }
+          ],
+          "ssvcV203": [
+            {
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "ssvcData": {
+                "timestamp": "2026-11-17T11:28:13.581967Z",
+                "id": "CVE-2026-129008",
+                "options": [
+                  {
+                    "exploitation": "none"
+                  },
+                  {
+                    "automatable": "no"
+                  },
+                  {
+                    "technicalImpact": "partial"
+                  }
+                ],
+                "role": "CISA Coordinator",
+                "version": "2.0.3"
+              }
+            }
+          ]
+        },
+        "weaknesses": [
+          {
+            "source": "audit@patchstack.com",
+            "type": "Secondary",
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ]
+          }
+        ],
+        "references": [
+          {
+            "url": "https://patchstack.com/database/wordpress/plugin/gutena-forms/vulnerability/wordpress-gutena-forms-contact-form-survey-form-feedback-form-booking-form-and-custom-form-builder-plugin-2-1-1-cross-site-scripting-xss-vulnerability?_s_id=cve",
+            "source": "audit@patchstack.com"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2026-129012",
+        "sourceIdentifier": "audit@patchstack.com",
+        "published": "2026-11-17T08:16:59.867",
+        "lastModified": "2026-11-17T12:17:46.230",
+        "vulnStatus": "Deferred",
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in LeapWorx Premium Addons for Elementor premium-addons-for-elementor allows Stored XSS.This issue affects Premium Addons for Elementor: from n/a through 4.11.118."
+          }
+        ],
+        "affected": [
+          {
+            "source": "audit@patchstack.com",
+            "affectedData": [
+              {
+                "vendor": "LeapWorx",
+                "product": "Premium Addons for Elementor",
+                "defaultStatus": "unaffected",
+                "collectionURL": "https://wordpress.org/plugins",
+                "packageName": "premium-addons-for-elementor",
+                "versions": [
+                  {
+                    "version": "0",
+                    "lessThanOrEqual": "4.11.118",
+                    "versionType": "custom",
+                    "status": "affected",
+                    "changes": [
+                      {
+                        "at": "4.11.119",
+                        "status": "unaffected"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "audit@patchstack.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:L",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "REQUIRED",
+                "scope": "CHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "LOW"
+              },
+              "exploitabilityScore": 2.3,
+              "impactScore": 3.7
+            }
+          ],
+          "ssvcV203": [
+            {
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "ssvcData": {
+                "timestamp": "2026-11-17T11:28:08.362012Z",
+                "id": "CVE-2026-129012",
+                "options": [
+                  {
+                    "exploitation": "none"
+                  },
+                  {
+                    "automatable": "no"
+                  },
+                  {
+                    "technicalImpact": "partial"
+                  }
+                ],
+                "role": "CISA Coordinator",
+                "version": "2.0.3"
+              }
+            }
+          ]
+        },
+        "weaknesses": [
+          {
+            "source": "audit@patchstack.com",
+            "type": "Secondary",
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ]
+          }
+        ],
+        "references": [
+          {
+            "url": "https://patchstack.com/database/wordpress/plugin/premium-addons-for-elementor/vulnerability/wordpress-premium-addons-for-elementor-plugin-4-11-118-cross-site-scripting-xss-vulnerability?_s_id=cve",
+            "source": "audit@patchstack.com"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2026-129031",
+        "sourceIdentifier": "audit@patchstack.com",
+        "published": "2026-11-17T08:17:00.007",
+        "lastModified": "2026-11-17T12:17:46.347",
+        "vulnStatus": "Deferred",
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in Cool Plugins Conditional Fields for Elementor Form \u2013 Display Conditions conditional-fields-for-elementor-form allows Stored XSS.This issue affects Conditional Fields for Elementor Form \u2013 Display Conditions: from n/a through 1.7.7."
+          }
+        ],
+        "affected": [
+          {
+            "source": "audit@patchstack.com",
+            "affectedData": [
+              {
+                "vendor": "Cool Plugins",
+                "product": "Conditional Fields for Elementor Form \u2013 Display Conditions",
+                "defaultStatus": "unaffected",
+                "collectionURL": "https://wordpress.org/plugins",
+                "packageName": "conditional-fields-for-elementor-form",
+                "versions": [
+                  {
+                    "version": "0",
+                    "lessThanOrEqual": "1.7.7",
+                    "versionType": "custom",
+                    "status": "affected",
+                    "changes": [
+                      {
+                        "at": "1.7.8",
+                        "status": "unaffected"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "audit@patchstack.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:L",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "REQUIRED",
+                "scope": "CHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "LOW"
+              },
+              "exploitabilityScore": 2.3,
+              "impactScore": 3.7
+            }
+          ],
+          "ssvcV203": [
+            {
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "ssvcData": {
+                "timestamp": "2026-11-17T11:28:16.635491Z",
+                "id": "CVE-2026-129031",
+                "options": [
+                  {
+                    "exploitation": "none"
+                  },
+                  {
+                    "automatable": "no"
+                  },
+                  {
+                    "technicalImpact": "partial"
+                  }
+                ],
+                "role": "CISA Coordinator",
+                "version": "2.0.3"
+              }
+            }
+          ]
+        },
+        "weaknesses": [
+          {
+            "source": "audit@patchstack.com",
+            "type": "Secondary",
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-79"
+              }
+            ]
+          }
+        ],
+        "references": [
+          {
+            "url": "https://patchstack.com/database/wordpress/plugin/conditional-fields-for-elementor-form/vulnerability/wordpress-conditional-fields-for-elementor-form-display-conditions-plugin-1-7-7-cross-site-scripting-xss-vulnerability?_s_id=cve",
+            "source": "audit@patchstack.com"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2026-107493",
+        "sourceIdentifier": "openssl-security@openssl.org",
+        "published": "2026-11-17T09:17:25.870",
+        "lastModified": "2026-11-17T22:17:20.830",
+        "vulnStatus": "Awaiting Analysis",
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "Issue summary: When an application passes a stack to\nPEM_X509_INFO_read_bio_ex() to add entries to, and reading fails,\nOpenSSL frees every entry in the stack, both the old ones and any new\nones, but leaves them in the stack.\n\nImpact summary: An application that passes an existing stack to\nPEM_X509_INFO_read_bio_ex() and keeps using it after a failed read may\nuse memory that was already freed. This can cause a crash or, in\nprinciple, memory corruption. Malformed PEM data can make the read fail,\nbut only applications that pass an existing stack are affected, and\nOpenSSL itself does not do this.\n\nCWE: CWE-416: Use After Free\n\nDescription: PEM_X509_INFO_read_bio_ex() reads certificates, CRLs and\nprivate keys from PEM data and adds them to a stack of X509_INFO\nstructures. If the application passes a stack that is not NULL, the\nfunction adds the new entries to it and must leave the entries that are\nalready there unchanged.\n\nIf reading fails, the function frees every entry in the stack. This\nincludes the entries that were there before the call, and the entries\nadded by the call. It does not remove these entries from the stack, so\nthe stack keeps pointers to freed memory. The failure can happen at any\npoint, even before any entry was added. A PEM item with invalid content\nis enough.  This also happens if the stack was empty: entries added\nbefore the failure are freed but stay in the stack.\n\nAn application that then reads or frees the stack will use memory that\nwas already freed. This can crash the application or, in principle,\ncorrupt memory.\n\nOnly applications that pass a stack that is not NULL are affected.\nOpenSSL itself never does this. Its own callers, including the code that\nTLS uses to load CA certificates, always pass NULL. When the stack is\nNULL, the function frees only the entries that it created itself, which\nis safe. We expect that very few applications pass an existing stack. An\nattacker can make the read fail with malformed PEM data, but cannot make\nan application pass an existing stack.\n\nThe same problem affects PEM_X509_INFO_read_bio(), PEM_X509_INFO_read()\nand PEM_X509_INFO_read_ex(), which use the same code. OpenSSL 1.1.1 and\n1.0.2 have only the first two of these functions.\n\nFIPS impact: no\nThe affected code is outside the FIPS module boundary."
+          }
+        ],
+        "affected": [
+          {
+            "source": "openssl-security@openssl.org",
+            "affectedData": [
+              {
+                "vendor": "OpenSSL",
+                "product": "OpenSSL",
+                "defaultStatus": "unaffected",
+                "versions": [
+                  {
+                    "version": "4.1.0",
+                    "lessThan": "4.1.1",
+                    "versionType": "semver",
+                    "status": "affected"
+                  },
+                  {
+                    "version": "4.0.0",
+                    "lessThan": "4.0.4",
+                    "versionType": "semver",
+                    "status": "affected"
+                  },
+                  {
+                    "version": "3.5.0",
+                    "lessThan": "3.5.10",
+                    "versionType": "semver",
+                    "status": "affected"
+                  },
+                  {
+                    "version": "3.0.0",
+                    "lessThan": "3.0.24",
+                    "versionType": "semver",
+                    "status": "affected"
+                  },
+                  {
+                    "version": "1.1.1",
+                    "lessThan": "1.1.1zk",
+                    "versionType": "custom",
+                    "status": "affected"
+                  },
+                  {
+                    "version": "1.0.2",
+                    "lessThan": "1.0.2zt",
+                    "versionType": "custom",
+                    "status": "affected"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:H",
+                "baseScore": 7.7,
+                "baseSeverity": "HIGH",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.5,
+              "impactScore": 5.2
+            }
+          ],
+          "ssvcV203": [
+            {
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "ssvcData": {
+                "timestamp": "2026-11-17T16:47:04.388261Z",
+                "id": "CVE-2026-107493",
+                "options": [
+                  {
+                    "exploitation": "none"
+                  },
+                  {
+                    "automatable": "no"
+                  },
+                  {
+                    "technicalImpact": "partial"
+                  }
+                ],
+                "role": "CISA Coordinator",
+                "version": "2.0.3"
+              }
+            }
+          ]
+        },
+        "weaknesses": [
+          {
+            "source": "openssl-security@openssl.org",
+            "type": "Secondary",
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-416"
+              }
+            ]
+          }
+        ],
+        "references": [
+          {
+            "url": "https://github.com/openssl/openssl/commit/0486dfadfec558e1808f59d35a8d79e541c4e7d7",
+            "source": "openssl-security@openssl.org"
+          },
+          {
+            "url": "https://github.com/openssl/openssl/commit/c57a5ccf0c060755b5494a6870922b7c6cdd7dd8",
+            "source": "openssl-security@openssl.org"
+          },
+          {
+            "url": "https://github.com/openssl/openssl/commit/c8f6d04f8e6d40b1bf83334e4a2ec9daf5943a3d",
+            "source": "openssl-security@openssl.org"
+          },
+          {
+            "url": "https://openssl-library.org/news/secadv/20261117.txt",
+            "source": "openssl-security@openssl.org"
+          }
+        ]
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2026-109138",
+        "sourceIdentifier": "30a5e7fb-040d-440a-8cdf-a4a2068ce72e",
+        "published": "2026-11-17T09:17:26.057",
+        "lastModified": "2026-11-17T17:17:47.680",
+        "vulnStatus": "Received",
+        "cveTags": [],
+        "descriptions": [
+          {
+            "lang": "en",
+            "value": "In the Aliro access control reference\n  applications of the Nordic Semiconductor nRF Door Lock and Access Control\n  Add-on v1.0.0 through v1.1.1, built with Credential Issuer CA\n  certificate-based issuer trust (CONFIG_DOOR_LOCK_CREDENTIAL_ISSUER_CA) and\n  the Aliro Step-up phase (CONFIG_DOOR_LOCK_STEP_UP_PHASE) enabled,\n  AccessManagerImpl::ProcessValidityIteration() treats a failed lookup of the\n  Credential Issuer in the provisioned issuer array as success. For an issuer\n  trusted through a certificate chain but not provisioned, the\n  ValidityIteration (credential-rollback) check is therefore skipped. A former\n  authorized holder with an old but correctly issuer-signed Access Document can\n  be granted physical access after the issuer has advanced its iteration to\n  revoke that credential. The default Matter provisioning configuration is not\n  affected. Fixed in v1.2.0."
+          }
+        ],
+        "affected": [
+          {
+            "source": "30a5e7fb-040d-440a-8cdf-a4a2068ce72e",
+            "affectedData": [
+              {
+                "vendor": "Nordic Semiconductor ASA",
+                "product": "nRF Door Lock and Access Control Add-on",
+                "defaultStatus": "unaffected",
+                "versions": [
+                  {
+                    "version": "v1.0.0 through v1.1.1 (inclusive). Fixed in v1.2.0.",
+                    "versionType": "semver",
+                    "status": "affected"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "metrics": {
+          "cvssMetricV40": [
+            {
+              "source": "30a5e7fb-040d-440a-8cdf-a4a2068ce72e",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "4.0",
+                "vectorString": "CVSS:4.0/AV:A/AC:L/AT:N/PR:N/UI:N/VC:N/VI:H/VA:N/SC:N/SI:H/SA:N/E:X/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+                "baseScore": 8.3,
+                "baseSeverity": "HIGH",
+                "attackVector": "ADJACENT",
+                "attackComplexity": "LOW",
+                "attackRequirements": "NONE",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "vulnConfidentialityImpact": "NONE",
+                "vulnIntegrityImpact": "HIGH",
+                "vulnAvailabilityImpact": "NONE",
+                "subConfidentialityImpact": "NONE",
+                "subIntegrityImpact": "HIGH",
+                "subAvailabilityImpact": "NONE",
+                "exploitMaturity": "NOT_DEFINED",
+                "confidentialityRequirement": "NOT_DEFINED",
+                "integrityRequirement": "NOT_DEFINED",
+                "availabilityRequirement": "NOT_DEFINED",
+                "modifiedAttackVector": "NOT_DEFINED",
+                "modifiedAttackComplexity": "NOT_DEFINED",
+                "modifiedAttackRequirements": "NOT_DEFINED",
+                "modifiedPrivilegesRequired": "NOT_DEFINED",
+                "modifiedUserInteraction": "NOT_DEFINED",
+                "modifiedVulnConfidentialityImpact": "NOT_DEFINED",
+                "modifiedVulnIntegrityImpact": "NOT_DEFINED",
+                "modifiedVulnAvailabilityImpact": "NOT_DEFINED",
+                "modifiedSubConfidentialityImpact": "NOT_DEFINED",
+                "modifiedSubIntegrityImpact": "NOT_DEFINED",
+                "modifiedSubAvailabilityImpact": "NOT_DEFINED",
+                "Safety": "NOT_DEFINED",
+                "Automatable": "NOT_DEFINED",
+                "Recovery": "NOT_DEFINED",
+                "valueDensity": "NOT_DEFINED",
+                "vulnerabilityResponseEffort": "NOT_DEFINED",
+                "providerUrgency": "NOT_DEFINED"
+              }
+            }
+          ],
+          "ssvcV203": [
+            {
+              "source": "134c704f-9b21-4f2e-91b3-4a467353bcc0",
+              "ssvcData": {
+                "timestamp": "2026-11-17T16:49:35.080278Z",
+                "id": "CVE-2026-109138",
+                "options": [
+                  {
+                    "exploitation": "none"
+                  },
+                  {
+                    "automatable": "no"
+                  },
+                  {
+                    "technicalImpact": "partial"
+                  }
+                ],
+                "role": "CISA Coordinator",
+                "version": "2.0.3"
+              }
+            }
+          ]
+        },
+        "weaknesses": [
+          {
+            "source": "30a5e7fb-040d-440a-8cdf-a4a2068ce72e",
+            "type": "Secondary",
+            "description": [
+              {
+                "lang": "en",
+                "value": "CWE-636"
+              },
+              {
+                "lang": "en",
+                "value": "CWE-863"
+              }
+            ]
+          }
+        ],
+        "references": [
+          {
+            "url": "https://docs.nordicsemi.com/r/bundle/struct_sa/page/struct/sa.html",
+            "source": "30a5e7fb-040d-440a-8cdf-a4a2068ce72e"
+          }
+        ]
+      }
+    }
+  ]
+}
